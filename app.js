@@ -4,7 +4,7 @@ app.listen(3000)
 const venom = require('venom-bot');
 venom
     .create({
-        session: 'session-name', //name of session
+        session: 'session-gabriel', //name of session
         multidevice: true // for version not multidevice use false.(default: true)
     })
     .then((client) => start(client))
@@ -22,9 +22,21 @@ venom
 
 
 function start(client) {
+    client.onMessage((message) => {
+        if (message.isGroupMsg === false) {
+          client
+            .sendText(message.from, '🤖 Sou o boot do gabriel ele esta almoçando no momento.')
+            .then((result) => {
+              console.log('Result: ', result); //return object success
+            })
+            .catch((erro) => {
+              console.error('Error when sending: ', erro); //return object error
+            });
+        }
+      });
     app.get('/', async function (req, res) {
         await client
-            .sendText('5541985071326@c.us', '👋 Eu sou fodaaaaaaaa fodaaa fodaa foda (leia com som ded ecoooo)!')
+            .sendText('5541985071326@c.us', '👋🤖 Eu sou fodaaaaaaaa fodaaa fodaa foda (leia com som ded ecoooo)!')
             .then((result) => {
                 console.log('Result: ', result); //return object success
             })
