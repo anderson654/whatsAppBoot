@@ -2,11 +2,19 @@ const express = require('express')
 const app = express()
 app.listen(3000)
 const venom = require('venom-bot');
+let image = '';
 venom
     .create({
         session: 'session-gabriel', //name of session
-        multidevice: true // for version not multidevice use false.(default: true)
-    })
+        multidevice: true,
+         // for version not multidevice use false.(default: true)
+    },(statusSession, session) => {
+        image = statusSession;
+        console.log('Status Session: ', statusSession);
+        //return isLogged || notLogged || browserClose || qrReadSuccess || qrReadFail || autocloseCalled || desconnectedMobile || deleteToken || chatsAvailable || deviceNotConnected || serverWssNotConnected || noOpenBrowser || initBrowser || openBrowser || connectBrowserWs || initWhatsapp || erroPageWhatsapp || successPageWhatsapp || waitForLogin || waitChat || successChat
+        //Create session wss return "serverClose" case server for close
+        console.log('Session name: ', session);
+      })
     .then((client) => start(client))
     .catch((erro) => {
         console.log(erro);
@@ -44,6 +52,6 @@ function start(client) {
             .catch((erro) => {
                 console.error('Error when sending: ', erro); //return object error
             });
-        res.send('Ué')
+        res.send(image)
     })
 }
