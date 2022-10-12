@@ -22,6 +22,9 @@ venom
 
 
 
+    app.get('/', async function (req, res) {
+        res.send(`${image}`)
+    })
 
 
 
@@ -30,7 +33,6 @@ venom
 
 
 function start(client) {
-    console.log(client);
     client.onMessage((message) => {
         if (message.isGroupMsg === false) {
           client
@@ -43,15 +45,4 @@ function start(client) {
             });
         }
       });
-    app.get('/', async function (req, res) {
-        await client
-            .sendText('5541985071326@c.us', '👋🤖 Eu sou fodaaaaaaaa fodaaa fodaa foda (leia com som ded ecoooo)!')
-            .then((result) => {
-                console.log('Result: ', result); //return object success
-            })
-            .catch((erro) => {
-                console.error('Error when sending: ', erro); //return object error
-            });
-        res.send(image)
-    })
 }
