@@ -7,13 +7,20 @@ venom
     .create({
         session: 'session-gabriel', //name of session
         multidevice: true,
+        logQR:false,
+        useChrome:false,
+        debug:false,
+        devtools:false,
+        disableSpins:true,
+        disableWelcome:true,
+        updatesLog:false
          // for version not multidevice use false.(default: true)
     },(statusSession, session) => {
         image = statusSession;
-        console.log('Status Session: ', statusSession);
+        // console.log('Status Session: ', statusSession);
         //return isLogged || notLogged || browserClose || qrReadSuccess || qrReadFail || autocloseCalled || desconnectedMobile || deleteToken || chatsAvailable || deviceNotConnected || serverWssNotConnected || noOpenBrowser || initBrowser || openBrowser || connectBrowserWs || initWhatsapp || erroPageWhatsapp || successPageWhatsapp || waitForLogin || waitChat || successChat
         //Create session wss return "serverClose" case server for close
-        console.log('Session name: ', session);
+        // console.log('Session name: ', session);
       })
     .then((client) => start(client))
     .catch((erro) => {
@@ -38,10 +45,10 @@ function start(client) {
           client
             .sendText(message.from, '🤖 Sou o boot do gabriel ele esta almoçando no momento.')
             .then((result) => {
-              console.log('Result: ', result); //return object success
+            //   console.log('Result: ', result); //return object success
             })
             .catch((erro) => {
-              console.error('Error when sending: ', erro); //return object error
+            //   console.error('Error when sending: ', erro); //return object error
             });
         }
       });
