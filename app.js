@@ -29,7 +29,7 @@ venom
 
 
 
-app.get('/', async function (req, res) {
+app.get('/loginWhats', async function (req, res) {
     res.send(`${image}`)
 })
 
